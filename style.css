@@ -15,7 +15,7 @@ body {
 }
 
 header {
-  background: url("../img/filler.png") center center;
+  background: url(./img/filler.png) center center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -462,6 +462,12 @@ button.submit:hover {
   background: #fff;
 }
 
+#status {
+  color: #fff;
+  align-self: flex-end;
+  padding: 1.3rem;
+}
+
 .footer {
   min-height: 20vh;
   background-color: #6b1739;
@@ -635,5 +641,22 @@ body::-webkit-scrollbar {
   }
   .projects {
     grid-template-columns: 1fr;
+  }
+  .more img {
+    width: 200px;
+  }
+  .header-text h1 {
+    font-size: 30px;
+  }
+  #intro {
+    text-align: center;
+  }
+
+  nav {
+    font-size: 14px;
+  }
+
+  .skill .level-container {
+    width: 200px;
   }
 }

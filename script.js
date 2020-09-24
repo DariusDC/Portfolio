@@ -35,7 +35,6 @@ const ui = document.querySelector(".ui");
 const navLinks = [home, about, portfolio, skills, contact];
 
 function init() {
-  console.log(slider);
   const tl = new TimelineMax({
     onComplete: function () {
       document.body.style.overflow = "auto";
@@ -45,7 +44,6 @@ function init() {
       );
     },
   });
-  console.log(texts);
   tl.to(texts, 0.7, { y: 0, stagger: 0.3 })
     .to(intro, 0.6, { y: "-100%" })
     .to(slider, 1, { y: "-100%" }, "-=0.6");
@@ -96,7 +94,6 @@ function handleScrolling(e) {
   }
 
   if (about.getBoundingClientRect().top < 400 && icons[0].style.opacity == 0) {
-    console.log("ok");
     const tl = new TimelineMax();
     tl.fromTo(icons[0], 1, { opacity: 0, y: 150 }, { opacity: 1, y: 0 })
       .fromTo(icons[1], 1, { opacity: 0, y: -150 }, { opacity: 1, y: 0 }, "-=1")
@@ -160,6 +157,43 @@ function animateHeader(element, text) {
   }
   animate();
 }
+
+// Form mail sender
+
+const form = document.getElementById("my-form");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const inputs = document.querySelectorAll(".form-input");
+  const values = [];
+  inputs.forEach((input) => values.push(input.value));
+  const body = {
+    name: values[0],
+    email: values[1],
+    message: values[2],
+  };
+  async function postData(url = "", data = {}) {
+    const response = await fetch(url, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "no-cors", // no-cors, *cors, same-origin
+      cache: "no-cache",
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      redirect: "follow", // manual, *follow, error
+      referrerPolicy: "no-referrer",
+      body: JSON.stringify(data),
+    });
+    return response.json();
+  }
+
+  postData("http://localhost:3000/mail", {
+    name: values[0],
+    email: values[1],
+    message: values[2],
+  }).then((data) => {});
+});
 
 window.addEventListener("scroll", handleScrolling);
 burger.addEventListener("click", handleBurger);

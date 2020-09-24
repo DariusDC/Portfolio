@@ -195,16 +195,28 @@
       <div class="contact-form">
         <h1 class="title">contact</h1>
         <p class="small">Have any question or want to work together?</p>
-        <form action="" class="form">
-          <input type="text" class="form-input" placeholder="Name" />
-          <input type="email" class="form-input" placeholder="Email" />
+        <form method="POST" id="my-form" class="form">
+          <input
+            name="name"
+            type="text"
+            class="form-input"
+            placeholder="Name"
+          />
+          <input
+            type="email"
+            class="form-input"
+            placeholder="Email"
+            name="email"
+          />
           <textarea
+            name="message"
             cols="30"
             placeholder="Message"
             rows="10"
             class="form-input"
           ></textarea>
           <button class="submit" type="submit">Submit</button>
+          <h3 id="status"></h3>
         </form>
       </div>
       <div class="footer">
