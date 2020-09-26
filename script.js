@@ -188,11 +188,14 @@ form.addEventListener("submit", async (e) => {
     return response.json();
   }
 
-  postData("http://localhost:3000/mail", {
+  postData("https://secret-shelf-82174.herokuapp.com/mail", {
     name: values[0],
     email: values[1],
     message: values[2],
   }).then((data) => {});
+
+  document.getElementById("status").innerHTML = "Thank you for the submission!";
+  inputs.forEach((input) => (input.value = ""));
 });
 
 window.addEventListener("scroll", handleScrolling);
