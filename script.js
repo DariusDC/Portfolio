@@ -26,7 +26,7 @@ const slider = document.querySelector(".slider");
 
 const main = document.querySelector("main");
 
-const js = document.querySelector(".js");
+const py = document.querySelector(".py");
 const css = document.querySelector(".css");
 const react = document.querySelector(".react");
 const node = document.querySelector(".node");
@@ -138,7 +138,7 @@ function handleScrolling(e) {
         { opacity: 1, x: 0 },
         "-=0.6"
       )
-      .fromTo(js, 0.6, { width: 0 }, { width: "80%" })
+      .fromTo(py, 0.6, { width: 0 }, { width: "80%" })
       .fromTo(css, 0.6, { width: 0 }, { width: "90%" }, "-=0.6")
       .fromTo(react, 0.6, { width: 0 }, { width: "75%" }, "-=0.6")
       .fromTo(node, 0.6, { width: 0 }, { width: "60%" }, "-=0.6")
@@ -157,46 +157,6 @@ function animateHeader(element, text) {
   }
   animate();
 }
-
-// Form mail sender
-
-const form = document.getElementById("my-form");
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const inputs = document.querySelectorAll(".form-input");
-  const values = [];
-  inputs.forEach((input) => values.push(input.value));
-  const body = {
-    name: values[0],
-    email: values[1],
-    message: values[2],
-  };
-  async function postData(url = "", data = {}) {
-    const response = await fetch(url, {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      mode: "no-cors", // no-cors, *cors, same-origin
-      cache: "no-cache",
-      credentials: "same-origin", // include, *same-origin, omit
-      headers: {
-        "Content-Type": "application/json",
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      redirect: "follow", // manual, *follow, error
-      referrerPolicy: "no-referrer",
-      body: JSON.stringify(data),
-    });
-    return response.json();
-  }
-
-  postData("https://secret-shelf-82174.herokuapp.com/mail", {
-    name: values[0],
-    email: values[1],
-    message: values[2],
-  }).then((data) => {});
-
-  document.getElementById("status").innerHTML = "Thank you for the submission!";
-  inputs.forEach((input) => (input.value = ""));
-});
 
 window.addEventListener("scroll", handleScrolling);
 burger.addEventListener("click", handleBurger);
