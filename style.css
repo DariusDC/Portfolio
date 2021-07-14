@@ -339,7 +339,13 @@ section h1.title {
 
 .skill-graph h3 {
   font-size: 24px;
-  margin-bottom: 1rem;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.skill-graph p {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 10px;
 }
 
 .skill {
